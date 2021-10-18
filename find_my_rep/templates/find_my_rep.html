@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Find My Representative</title>
+</head>
+
+<body>
+    {% if message %}
+        <p>{{ message }}</p>
+    {% endif %}
+
+    <form action="" method="post">
+        <p>
+            <label for="zipcode">Zipcode:</label>
+            <input type="text" id="zipcode" name="zipcode">
+        </p>
+        <p>
+            <input type="submit" value="Submit">
+        </p>
+    </form>
+</body>
+
+</html>
