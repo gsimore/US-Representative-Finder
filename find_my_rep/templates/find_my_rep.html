@@ -21,11 +21,18 @@
     </form>
 
     <div>
-        <p>
+        <ul>
             {% for rep in reps %}
-                {{ reps }}
+                <li>
+                    <p>Name: {{ rep.name }}</p>
+                    <p>State: {{ rep.state }}</p>
+                    <p>District: {{ rep.district }}</p>
+                    <p>Phone: {{ rep.phone }}</p>
+                    <p>Address: {{ rep.address }}</p>
+                    <p>URL: {{ rep.url }}</p>
+                </li>
             {% endfor %}
-        </p>
+        </ul>
     </div>
 </body>
 
