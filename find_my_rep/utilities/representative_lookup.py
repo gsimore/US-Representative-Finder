@@ -42,12 +42,14 @@ def get_states_and_districts(zipcode):
     else:
         return list(zip(state.tolist(), district.tolist()))
 
-def get_representative(state, district):
+
+def get_representatives_df():
     """
-    Looks up the US Representative for the given state and district.
-    :param state: str,
-    :param district: int
-    :return:
+    Load the legislators json file into a pandas DataFrame, then perform
+    some data cleaning including filtering to representatives, setting the index,
+    and filtering down to only current terms based on the current date.
+
+    :return: pandas.DataFrame
     """
     with open(LEGISLATORS_FILE_PATH) as f:
         data = json.loads(f.read())
@@ -64,6 +66,16 @@ def get_representative(state, district):
     # Filter to current terms.
     df = df[(df['start'] <= ACTIVE_DATE) & (df['end'] >= ACTIVE_DATE)]
 
+    return df
+
+
+def get_representative(df, state, district):
+    """
+    Looks up the US Representative for the given state and district.
+    :param state: str,
+    :param district: int
+    :return:
+    """
     try:
         rep_data = df.loc[state, district]
     except KeyError:
@@ -75,8 +87,9 @@ def get_representative(state, district):
 def lookup_representatives(zipcode):
     states_districts = get_states_and_districts(zipcode)
     reps = []
+    df = get_representatives_df()
     for state, district in states_districts:
-        data = get_representative(state, district)
+        data = get_representative(df, state, district)
         reps.append({
             'state': state,
             'district': district,
