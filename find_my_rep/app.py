@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request
-from utilities.representative_lookup import lookup_representatives
+from utilities.representative_lookup import lookup_representatives, ZipcodeNotFound, DistrictNotFound
+
 app = Flask(__name__)
 
 
@@ -10,7 +11,12 @@ def find_representative():
     if request.method == 'POST':
         zipcode = request.form.get('zipcode')
         if zipcode:
-            reps = lookup_representatives(zipcode)
+            try:
+                reps = lookup_representatives(zipcode)
+            except ZipcodeNotFound:
+                message = f"The zipcode {zipcode} could not be found."
+            except DistrictNotFound:
+                message = f"No district could be found for the zipcode {zipcode}."
         else:
             message = "Please enter a zipcode"
 
