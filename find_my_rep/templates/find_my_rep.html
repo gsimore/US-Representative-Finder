@@ -10,11 +10,13 @@
 
 <body>
 <div class="w-full flex flex-col">
-    <div class="flex justify-center mt-24 mb-10">
+    <div class="flex justify-center mt-24 py-4">
         {% if message %}
-            <p>{{ message }}</p>
+            <p class="text-red-400 font-bold">{{ message }}</p>
         {% endif %}
+    </div>
 
+    <div class="flex justify-center py-4">
         <div>
             <form class="m-4 flex" action="" method="post">
                 <input class="rounded-l-lg p-4 border-t mr-0 border-b border-l text-gray-800 border-gray-200 bg-white"
