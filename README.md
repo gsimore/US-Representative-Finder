@@ -41,17 +41,11 @@ make setup
 make run
 ```
 
-# Development 
+# Maintenance
 
-### Run in development mode
-```bash
-make run-dev
-```
-
-## Managing dependencies
+### Updating requirements
 
 This project usis `pip-tools` to manage dependencies and has some handy `make` commands for updating and installing dependencies. 
-### Updating requirements
 
 Add/edit dependencies inside `requirements/base.in` and then run
 ```bash

@@ -3,12 +3,10 @@ import json
 import os
 
 import pandas
-from flask import Flask
-
-app = Flask(__name__)
+import config
 
 ACTIVE_DATE = datetime.date(2019, 1, 1)
-DATA_PATH = os.path.join(os.path.dirname(os.path.dirname(app.root_path)), 'data')
+DATA_PATH = os.path.join(config.BASE_DIR, 'data')
 LEGISLATORS_FILE_PATH = os.path.join(DATA_PATH, 'legislators.json')
 ZIPCODE_DISTRICTS_FILE_PATH = os.path.join(DATA_PATH, 'zipcode-districts.json')
 

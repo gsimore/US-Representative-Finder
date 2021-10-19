@@ -17,10 +17,4 @@ setup:
 
 run:
 	@echo 'Running app'
-	export FLASK_APP=find_my_rep/app
-	flask run
-
-run-dev:
-	@echo 'Running local development'
-	export FLASK_ENVIRONMENT=development
-	make run
+	python find_my_rep/app.py

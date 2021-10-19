@@ -15,3 +15,7 @@ def find_representative():
             message = "Please enter a zipcode"
 
     return render_template('find_my_rep.html', message=message, reps=reps)
+
+
+if __name__ == '__main__':
+    app.run(debug=True)
