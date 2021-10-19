@@ -12,7 +12,9 @@ install_requirements:
 	pip-sync requirements/base.txt
 
 setup:
-	@echo 'Setting up the environment...'
+	@echo 'Installing Node Dependencies...'
+	npm install
+	@echo 'Installing Python Dependencies...'
 	make install_requirements
 
 run:

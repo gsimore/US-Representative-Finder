@@ -23,7 +23,9 @@ The `/data` folder in this repo contains two datasets which contains all the dat
 # Setup
 
 ### Pre-requisites
-* Have Python 3.8 installed
+- Python >= 3.8
+- NodeJS >= 14.18.1
+- npm == 6.14.x (comes with node 10+)
 
 ### Create a Virtual Environment
 
@@ -31,7 +33,7 @@ The `/data` folder in this repo contains two datasets which contains all the dat
 python -m venv /path/to/new/virtual/environment
 ```
 
-### Install Requirements
+### Install Python and Node dependencies
 ```bash
 make setup
 ```

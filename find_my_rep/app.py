@@ -8,6 +8,7 @@ app = Flask(__name__)
 def find_representative():
     reps = []
     message = ''
+    zipcode = None
     if request.method == 'POST':
         zipcode = request.form.get('zipcode')
         if zipcode:
@@ -20,7 +21,7 @@ def find_representative():
         else:
             message = "Please enter a zipcode"
 
-    return render_template('find_my_rep.html', message=message, reps=reps)
+    return render_template('find_my_rep.html', message=message, reps=reps, zipcode=zipcode)
 
 
 if __name__ == '__main__':

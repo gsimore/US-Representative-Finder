@@ -2,38 +2,72 @@
 <html>
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Find My Representative</title>
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/main.css') }}">
 </head>
 
 <body>
-    {% if message %}
-        <p>{{ message }}</p>
-    {% endif %}
+<div class="w-full flex flex-col">
+    <div class="flex justify-center mt-24 mb-10">
+        {% if message %}
+            <p>{{ message }}</p>
+        {% endif %}
 
-    <form action="" method="post">
-        <p>
-            <label for="zipcode">Zipcode:</label>
-            <input type="text" id="zipcode" name="zipcode">
-        </p>
-        <p>
-            <input type="submit" value="Submit">
-        </p>
-    </form>
-
-    <div>
-        <ul>
-            {% for rep in reps %}
-                <li>
-                    <p>Name: {{ rep.name }}</p>
-                    <p>State: {{ rep.state }}</p>
-                    <p>District: {{ rep.district }}</p>
-                    <p>Phone: {{ rep.phone }}</p>
-                    <p>Address: {{ rep.address }}</p>
-                    <p>URL: {{ rep.url }}</p>
-                </li>
-            {% endfor %}
-        </ul>
+        <div>
+            <form class="m-4 flex" action="" method="post">
+                <input class="rounded-l-lg p-4 border-t mr-0 border-b border-l text-gray-800 border-gray-200 bg-white"
+                       placeholder="Your Zipcode"
+                       type="text"
+                       name="zipcode"
+                       {% if zipcode %}value="{{ zipcode }}"{% endif %}
+                />
+                <button class="px-8 rounded-r-lg bg-red-400  text-white font-bold p-4 uppercase border-red-500 border-t border-b border-r"
+                        type="submit">
+                    Find
+                </button>
+            </form>
+        </div>
     </div>
+
+    <div class="flex w-full px-8 pt-12 pb-8 bg-blue-900 justify-center">
+        <div class="flex flex-col text-white">
+                <h1 class="font-bold text-4xl my-4">
+                    {% if reps %}
+                        Your Representative{% if reps|length > 1 %}s{% endif %}
+                    {% else %}
+                        Find Your Representative
+                    {% endif %}
+                </h1>
+            {% for rep in reps %}
+                <hr>
+                <h2 class="text-2xl mt-4">{{ rep.name }}</h2>
+
+                <div class="flex flex-col my-4 w-2/3 lg:w-1/2">
+                    <h2 class="text-xl">District</h2>
+                    <p class="text-gray-400">{{ rep.state }}-{{ rep.district }}</p>
+                </div>
+
+                <div class="flex flex-col my-4 w-2/3 lg:w-1/2">
+                    <h2 class="text-xl">Address</h2>
+                    <p class="text-gray-400">{{ rep.address }}</p>
+                </div>
+
+                <div class="flex flex-col my-4 w-2/3 lg:w-1/2">
+                    <h2 class="text-xl">Contact</h2>
+                    <p class="text-gray-400">Phone: {{ rep.phone }}</p>
+                </div>
+
+                <div class="flex flex-col my-4 w-2/3 lg:w-1/2">
+                    <h2 class="text-xl">Website</h2>
+                    <a href="{{ rep.url }}" target="_blank" rel="noreferrer">{{ rep.url }}</a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+</div>
 </body>
 
 </html>
