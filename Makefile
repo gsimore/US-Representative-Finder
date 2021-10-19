@@ -20,3 +20,7 @@ setup:
 run:
 	@echo 'Running app'
 	python find_my_rep/app.py
+
+run_tests:
+	@echo 'Running pytest'
+	pytest find_my_rep/tests.py

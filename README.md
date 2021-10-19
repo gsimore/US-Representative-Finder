@@ -54,3 +54,8 @@ Add/edit dependencies inside `requirements/base.in` and then run
 make update_requirements
 make install_requirements
 ```
+
+### Run Tests
+```bash
+make run_tests
+```
