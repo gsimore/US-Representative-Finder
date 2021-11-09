@@ -18,3 +18,44 @@ The `/data` folder in this repo contains two datasets which contains all the dat
 - Please don't work on this for more than 2 hours
 - Consider the current date to be 2019-01-01
 - If you find issues with the data or the spec, work around them as best you can and be prepared to discuss
+
+----------------------------------------
+# Setup
+
+### Pre-requisites
+- Python >= 3.8
+- NodeJS >= 14.18.1
+- npm == 6.14.x (comes with node 10+)
+
+### Create a Virtual Environment
+
+```bash
+python -m venv /path/to/new/virtual/environment
+```
+
+### Install Python and Node dependencies
+```bash
+make setup
+```
+
+### Run the app
+```bash
+make run
+```
+
+# Maintenance
+
+### Updating requirements
+
+This project usis `pip-tools` to manage dependencies and has some handy `make` commands for updating and installing dependencies. 
+
+Add/edit dependencies inside `requirements/base.in` and then run
+```bash
+make update_requirements
+make install_requirements
+```
+
+### Run Tests
+```bash
+make run_tests
+```

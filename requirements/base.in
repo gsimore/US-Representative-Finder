@@ -1,0 +1,7 @@
+flask
+
+# For data processing
+jupyter
+pandas
+
+pytest
